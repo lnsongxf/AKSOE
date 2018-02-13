@@ -1,0 +1,284 @@
+
+\documentclass[11pt]{article}
+\usepackage{geometry} % see geometry.pdf on how to lay out the page. There's lots.
+\usepackage{setspace}
+\usepackage{boxedminipage}
+\usepackage{color}
+\usepackage{relsize}
+\usepackage[greek,english]{babel}
+\usepackage[colorinlistoftodos,shadow]{todonotes}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{url}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{mathrsfs}
+\usepackage[multiple]{footmisc}
+\usepackage[para]{manyfoot}
+
+\usepackage{tikz}
+\usepackage{dcolumn}
+\usepackage{caption}
+\usepackage{subfig}
+
+
+%\geometry{a4paper} % or letter or a5paper or ... etc
+% \geometry{landscape} % rotated page geometry
+
+% See the ``Article customise'' template for come common customisations
+
+\title{MATLAB Codes: \\
+	Small Open Economy Monetary Policy and Equilibrium Determinacy:
+	New Lessons from a Model with Endogenous Monetary Policy Trade-Off }
+\author{Jaime Alonso-Carrera and Timothy Kam}
+\date{\today} % delete this line to display the current date
+
+%%% BEGIN DOCUMENT
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+The recursive competitive equilibrium is characterized by a three-equation forward-looking dynamical system:
+\begin{equation}
+\pi _{H,t}=\widehat{\beta }\mathbb{E}_{t}\left\{ \pi _{H,t}\right\} +\lambda
+\left( \kappa _{1}\widetilde{x}_{t}+\kappa _{2}\widetilde{q}_{t}\right) ,
+\label{Phillips}
+\end{equation}%
+\begin{equation}
+\widetilde{x}_{t}=\varpi \mathbb{E}_{t}\left\{ \widetilde{x}_{t+1}\right\}
+-\mu \left[ i_{t}-\mathbb{E}_{t}\left\{ \pi _{H,t+1}\right\} \right] +\chi 
+\mathbb{E}_{t}\left\{ \widetilde{q}_{t+1}\right\} +\epsilon _{t},
+\label{is equation}
+\end{equation}%
+and 
+\begin{equation}
+\widetilde{q}_{t}=\mathbb{E}_{t}\left\{ \widetilde{q}_{t+1}\right\} -\left(
+1-\gamma \right) \left[ i_{t}-\mathbb{E}_{t}\left\{ \pi _{H,t+1}\right\} %
+\right] +u_{t},  \label{exchange dynamics}
+\end{equation}%
+where%
+\begin{equation*}
+\lambda =\left[ \frac{\left( 1-\theta \right) \left( 1-\theta \beta \right) 
+}{\theta }\right] \left[ \frac{\left( 1-v\right) \left( 1-\delta \right) }{%
+1-v+\delta \varphi }\right] ,
+\end{equation*}%
+\begin{equation*}
+\kappa _{1}=\frac{\sigma }{1-\gamma }+\varphi ,
+\end{equation*}%
+\begin{equation*}
+\kappa _{2}=\underset{\text{Production effect}}{\underbrace{\frac{\delta
+(1-v+\varphi )}{\left( 1-\gamma \right) \left( 1-v\right) (1-\delta )}}}-%
+\underset{\text{demand effect}}{\underbrace{\frac{\sigma \eta \gamma \left(
+2-\gamma \right) }{\left( 1-\gamma \right) ^{2}}+\frac{\gamma }{1-\gamma }}},
+\end{equation*}%
+\begin{equation*}
+\varpi =\frac{\sigma }{\sigma -\phi },
+\end{equation*}%
+\begin{equation*}
+\mu =\left( \frac{1-\gamma }{\sigma -\phi }\right) \left[ 1-\gamma +\frac{%
+\eta \gamma \left( 2-\gamma \right) \left( \sigma -\phi \right) }{1-\gamma }%
+\right] ,
+\end{equation*}%
+and%
+\begin{equation*}
+\chi =\frac{\eta \gamma \phi \left( 2-\gamma \right) }{\left( 1-\gamma
+\right) \left( \sigma -\phi \right) }.
+\end{equation*}
+
+\section{Calibration}
+
+Our baseline economy is defined by taking the same parameters as Llosa and
+Tuesta (2008) and McCallum and Nelson (1999). Llosa and Tuesta (2008) uses
+the same calibration as Gali and Monacelli (2005) with the exception of the
+inverse of IES ($\sigma ),$ the inverse of Frisch labor supply elasticity ($%
+\varphi ),$ and the elasticity of substitution between domestic and foreign
+goods ($\eta ).$ However, the calibration of the former seems much
+convenient for our analysis for two reasons: (i) because of comparison for
+the stability analysis; and (ii) because is a much general calibration.
+Furthermore, these parameters does not affect qualitatively to the results,
+although they may have important quantitative effects. This is mainly true
+in the case of $\sigma .$ In fact, we will perform some sensitivity analysis
+in this parameter when it would be required.
+
+The next table summarizes this parametrization:
+
+\begin{center}
+\begin{tabular}{|lllll|}
+\hline
+\textbf{Parameter} &  & \textbf{Value} &  & \textbf{Source} \\ 
+\cline{1-1}\cline{3-3}\cline{5-5}
+\textit{Preferences} &  &  &  &  \\ 
+\multicolumn{1}{|c}{$\sigma $} &  & \multicolumn{1}{c}{$5$} &  & Llosa and
+Tuesta (2008) \\ 
+\multicolumn{1}{|c}{$\psi $} &  & \multicolumn{1}{c}{$-1$} &  & Gali and
+Monacelli (2005) \\ 
+\multicolumn{1}{|c}{$\varphi $} &  & \multicolumn{1}{c}{$0.47$} &  & Llosa
+and Tuesta (2008) \\ 
+\multicolumn{1}{|c}{$\phi $} &  & \multicolumn{1}{c}{$10^{-6}$} &  &  \\ 
+\multicolumn{1}{|c}{$\vartheta $} &  & \multicolumn{1}{c}{$0$} &  &  \\ 
+\multicolumn{1}{|c}{$\beta $} &  & \multicolumn{1}{c}{$0.99$} &  & Gali and
+Monacelli (2005) \\ 
+\textit{Composition demand} &  & \multicolumn{1}{c}{} &  &  \\ 
+\multicolumn{1}{|c}{$\eta $} &  & \multicolumn{1}{c}{$1.5$} &  & Llosa and
+Tuesta (2008) \\ 
+\multicolumn{1}{|c}{$\gamma $} &  & \multicolumn{1}{c}{$0.4$} &  & Gali and
+Monacelli (2005) \\ 
+\multicolumn{1}{|c}{$\varepsilon $} &  & \multicolumn{1}{c}{$6$} &  & Gali
+and Monacelli (2005) \\ 
+\multicolumn{1}{|c}{$sc$} &  & \multicolumn{1}{c}{$0.75$} &  & Cooley and
+Prescott (1995) \\ 
+&  & \multicolumn{1}{c}{$0.89$} &  & McCallum and Nelson (1999) \\ 
+\textit{Production} &  & \multicolumn{1}{c}{} &  &  \\ 
+\multicolumn{1}{|c}{$\theta $} &  & \multicolumn{1}{c}{$0.75$} &  & Gali and
+Monacelli (2005) \\ 
+\multicolumn{1}{|c}{$v$} &  & \multicolumn{1}{c}{$-2$} &  & McCallum and
+Nelson (1999) \\ 
+\multicolumn{1}{|c}{$\delta $} &  & \multicolumn{1}{c}{$0.144$} &  & 
+McCallum and Nelson (1999) \\ \hline
+\end{tabular}
+\end{center}
+
+The parameter $v$ is chosen by McCallum and Nelson (2005) to avoid a
+excessive variability of the output under flexible prices with respect to
+real exchange rate. In our model this variability is given by $\Omega _{2}.$
+As in the aforementioned paper, this volatility is small for values of $v$
+smaller than $-2.$
+
+The previous would be our baseline economy. However, we will compare in our
+numerical discussion and analysis between four different scenarios:
+
+\begin{enumerate}
+\item Our baseline economy: the open economy with incomplete markets.
+
+\item Our extreme example followed to derive the optimal policy: $\phi =0,$ $%
+\alpha =1$ (i.e., $\delta =0)$.
+
+\item The open economy with complete markets: $\kappa _{2}=0,$ $\kappa
+_{1}=\kappa _{1}^{c}$ and $\mu =\mu ^{c}.$ Moreover, the other characterization of this economy is given by the complete risk sharing condition, in place of the UIP condition.
+
+\item The close economy: $\gamma =0$ and $\alpha =1$ (i.e., $\delta =0).$
+\end{enumerate}
+
+Afterwards we may also consider the intervals of the parameters that
+determines the stability of the equilibrium under different monetary
+policies. These parameters could be: (i) those determining the openness via
+demand, i.e., $\eta $ and $\gamma ;$ (ii) those determining the openness via
+production, i.e., $\alpha $ and $v;$ (iii) those determining the frictions,
+i.e., $\varepsilon $ and $\theta ;$ and (iv) the inverse of the
+intertemporal elasticity of substitution $\sigma$.
+
+\section{Numerical Experiments}
+
+We will consider three policy rules:
+
+\begin{enumerate}
+\item The \textit{Domestic Inflation Taylor Rule} (DITR).- Where the
+domestic monetary authority adjust the domestic interest rate to both
+domestic inflation and the domestic output gap:%
+\begin{equation}
+i_{t}=\phi _{\pi }\pi _{H,t}+\phi _{x}\widetilde{x}_{t}  \label{DITR}
+\end{equation}%
+where $\phi _{\pi }$ and $\phi _{x}$ are exogenous non-negative reaction
+parameters.
+
+\item The\textit{\ CPI Inflation Taylor Rule} (CPITR).- Where the monetary
+authority adjust the domestic interest rate to both CPI inflation and the
+domestic gap:%
+\begin{equation}
+i_{t}=\phi _{\pi }\pi _{t}+\phi _{x}\widetilde{x}_{t},  \label{CPITR}
+\end{equation}%
+where $\phi _{\pi }$ and $\phi _{x}$ are again exogenous non-negative
+reaction parameters.
+
+\item The \textit{Managed Exchange Rate Taylor Rule} (MERTR).- Where the
+domestic monetary authority adjust the domestic interest rate to CPI
+inflation, the domestic output gap and the change in the nominal exchange
+rate:%
+\begin{equation}
+i_{t}=\phi _{\pi }\pi _{t}+\phi _{x}\widetilde{x}_{t}+\phi
+_{s}\bigtriangleup s_{t}  \label{MERTR}
+\end{equation}%
+where $\bigtriangleup s_{t}$ is the change in the nominal exchange rate, and 
+$\phi _{\pi },$ $\phi _{x}$ and $\phi _{s}$ are again exogenous non-negative
+reaction parameters.
+
+\item The \textit{Optimal Policy Rule} (OPR).- We have obtained that the
+optimal condition of the minimization problem of the Loss Function is%
+\begin{equation}
+a\widetilde{q}_{t}+b\widetilde{x}_{t}+c\pi _{H,t}+\widetilde{z}_{t}=0,
+\label{OPR}
+\end{equation}%
+where $a,$ $b$ and $c$ are reduced parameters that depend on the fundamental
+parameters, and $\widetilde{z}_{t}$ is an exogenous stochastic variable.
+This will be a monetary rule of the form%
+\begin{equation*}
+i_{t}=\widehat{\phi }_{\pi }E\left\{ \pi _{H,t+1}\right\} +\widehat{\phi }%
+_{x}E\left\{ \widetilde{x}_{t+1}\right\} +\widehat{\phi }_{q}E\left\{ 
+\widetilde{q}_{t+1}\right\} ,
+\end{equation*}%
+where $\widehat{\phi }_{\pi },$ $\widehat{\phi }_{x}$ and $\widehat{\phi }%
+_{q}$ are now \textbf{endogenous} reaction parameters (i.e., they depend on
+the fundamental parameters of our model). For that reason we first study the
+stability of the following ad-hoc rule\ :%
+\begin{equation}
+i_{t}=\phi _{\pi }E\left\{ \pi _{H,t+1}\right\} +\phi _{x}E\left\{ 
+\widetilde{x}_{t+1}\right\} +\phi _{q}E\left\{ \widetilde{q}_{t+1}\right\} ,
+\label{FB-ERTR}
+\end{equation}%
+where $\phi _{\pi },$ $\phi _{x}$ and $\phi _{q}$ are again exogenous
+non-negative reaction parameters. After that, we should check if the
+parameters of the optimal rule $\widehat{\phi }_{\pi },$ $\widehat{\phi }_{x}
+$ and $\widehat{\phi }_{q}$ belong to the set of parameters $\left\{ \phi
+_{\pi },\phi _{x},\phi _{q}\right\} $ that report determinacy in the previous%
+\textit{\ Forecast-Based Managed Exchange Rate Taylor Rule (FB-MERTR)}.
+\end{enumerate}
+
+\section{\texttt{MATLAB} Scripts}
+
+\noindent\textbf{Step 1.} The relevant \texttt{MATLAB} scripts are stored in the directory \texttt{simulations/} of the accompanying files to the paper. Below we list a short description of each experiment/script:
+\begin{itemize}
+\item Domestic Inflation Targeting Rule (DITR) and Forecast-based DITR (FB-DITR):
+	\begin{itemize}
+	\item \texttt{ditr\_{close}.m}: For the closed economy special case of our model.
+	\item \texttt{ditr\_complete.m}: For the Gali-Monacelli complete markets open economy special case of our model.
+	\item \texttt{ditr.m}: For our model with incomplete markets.
+	\end{itemize}
+	
+\item CPI Inflation Targeting Rule (CPITR) and Forecast-based CPITR (FB-CPITR):
+	\begin{itemize}
+	\item \texttt{cpitr\_{close}.m}: For the closed economy special case of our model.
+	\item \texttt{mertrCPI\_complete.m}: Set \texttt{POLICY = 0} for this rule in the script. For the Gali-Monacelli complete markets open economy special case of our model.
+	\item \texttt{mertrCPI.m}: Set \texttt{POLICY = 0} for this rule in the script. For our model with incomplete markets.
+	\end{itemize}
+	
+\item Managed Exchange Rate Taylor Rule (MERTR) and Forecast-based MERTR (FB-MERTR):
+	\begin{itemize}
+	\item \texttt{mertrCPI\_complete.m}: Set \texttt{POLICY = 1} for this rule in the script.  For the Gali-Monacelli complete markets open economy special case of our model.
+	\item \texttt{mertrCPI.m}: Set \texttt{POLICY = 1} for this rule in the script. For our model with incomplete markets.
+	\end{itemize}	
+	
+\item Optimal Time-Consistent Managed Exchange Rate Taylor Rule (MERTR) and Forecast-based MERTR (FB-MERTR):
+	\begin{itemize}
+	\item \texttt{mertrCPI\_complete.m}: Set \texttt{POLICY = 1} for the FB-MERTR rule in the script.  For the Gali-Monacelli complete markets open economy special case of our model.
+	\item \texttt{mertrCPI.m}: Set \texttt{POLICY = 1} for the FB-MERTR rule in the script. For our model with incomplete markets.
+	\item \texttt{mertr\_optimal}: Compute stability regions under a set of FB-MERTR where the $\phi_{q}$ parameter is changed; for the incomplete markets model. Also computes the point corresponding to the baseline calibrated model's optimal time-consistent policy rule, expressed as a point in the FB-MERTR family of rules.
+	\end{itemize}	
+\end{itemize}
+
+\noindent\textbf{Step 2.} A summary script is found in $\texttt{patchdraw.m}$. This collects all the results above and performs a convex hull approximation of relevant regions of $(\phi_{\pi}, \phi_{x})$ that induces stable rational expectations equilibrium for each fixed policy behavior. This script then graphs and saves the output as ``patch'' diagrams. The figures are named and saved automatically according to the name of the family of policy rules considered (e.g. \texttt{ditr.eps} and \texttt{ditr.fig} for the DITR family of rules) in a sub-directory called \texttt{simulations/\_{figures}/}.
+
+\subsection{User instructions}
+
+\begin{itemize}
+\item Perform all the possible combinations of the script executions in Step1 above.
+\item Then run Step 2.
+\end{itemize}
+
+\end{document}

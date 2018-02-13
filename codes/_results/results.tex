@@ -1,0 +1,1181 @@
+
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\setcounter{MaxMatrixCols}{10}
+%TCIDATA{OutputFilter=LATEX.DLL}
+%TCIDATA{Version=5.50.0.2953}
+%TCIDATA{<META NAME="SaveForMode" CONTENT="1">}
+%TCIDATA{BibliographyScheme=Manual}
+%TCIDATA{Created=Friday, May 14, 2010 12:14:55}
+%TCIDATA{LastRevised=Friday, June 18, 2010 17:15:33}
+%TCIDATA{<META NAME="GraphicsSave" CONTENT="32">}
+%TCIDATA{<META NAME="DocumentShell" CONTENT="Standard LaTeX\Blank - Standard LaTeX Article">}
+%TCIDATA{Language=American English}
+%TCIDATA{CSTFile=40 LaTeX article.cst}
+%TCIDATA{ComputeDefs=
+%$\kappa _{1}^{c}=\left[ \frac{1}{{}}\right] \left( \frac{\sigma }{1-\gamma }%
+%\right) +\varphi $
+%}
+
+
+\special{papersize=29.7cm,21cm}
+\textheight 22cm
+\textwidth 14,5cm
+\oddsidemargin 0.75cm
+\headsep 0cm
+%\input tcilatex
+\begin{document}
+
+\title{On a tractable Small Open Economy Model with Endogenous
+Monetary-Policy Trade-offs\vspace{1.5cm}\\
+Numerical analysis\vspace{1.5cm}}
+\author{Jaime Alonso-Carrera and Timothy Kam}
+\maketitle
+
+\newpage
+
+\section{Approximation of the competitive equilibrium}
+
+The competitive equilibrium is now represented by three equations:%
+\begin{equation}
+\pi _{H,t}=\widehat{\beta }\mathbb{E}_{t}\left\{ \pi _{H,t}\right\} +\lambda
+\left( \kappa _{1}\widetilde{x}_{t}+\kappa _{2}\widetilde{q}_{t}\right) ,
+\label{Phillips}
+\end{equation}%
+\begin{equation}
+\widetilde{x}_{t}=\varpi \mathbb{E}_{t}\left\{ \widetilde{x}_{t+1}\right\}
+-\mu \left[ i_{t}-\mathbb{E}_{t}\left\{ \pi _{H,t+1}\right\} \right] +\chi 
+\mathbb{E}_{t}\left\{ \widetilde{q}_{t+1}\right\} +\epsilon _{t},
+\label{is equation}
+\end{equation}%
+and 
+\begin{equation}
+\widetilde{q}_{t}=\mathbb{E}_{t}\left\{ \widetilde{q}_{t+1}\right\} -\left(
+1-\gamma \right) \left[ i_{t}-\mathbb{E}_{t}\left\{ \pi _{H,t+1}\right\} %
+\right] +u_{t},  \label{exchange dynamics}
+\end{equation}%
+where%
+\begin{equation*}
+\lambda =\left[ \frac{\left( 1-\theta \right) \left( 1-\theta \beta \right) 
+}{\theta }\right] \left[ \frac{\left( 1-v\right) \left( 1-\delta \right) }{%
+1-v+\delta \varphi }\right] ,
+\end{equation*}%
+\begin{equation*}
+\kappa _{1}=\frac{\sigma }{1-\gamma }+\varphi ,
+\end{equation*}%
+\begin{equation*}
+\kappa _{2}=\underset{\text{Production effect}}{\underbrace{\frac{\delta
+(1-v+\varphi )}{\left( 1-\gamma \right) \left( 1-v\right) (1-\delta )}}}-%
+\underset{\text{demand effect}}{\underbrace{\frac{\sigma \eta \gamma \left(
+2-\gamma \right) }{\left( 1-\gamma \right) ^{2}}+\frac{\gamma }{1-\gamma }}},
+\end{equation*}%
+\begin{equation*}
+\varpi =\frac{\sigma }{\sigma -\phi },
+\end{equation*}%
+\begin{equation*}
+\mu =\left( \frac{1-\gamma }{\sigma -\phi }\right) \left[ 1-\gamma +\frac{%
+\eta \gamma \left( 2-\gamma \right) \left( \sigma -\phi \right) }{1-\gamma }%
+\right] ,
+\end{equation*}%
+and%
+\begin{equation*}
+\chi =\frac{\eta \gamma \phi \left( 2-\gamma \right) }{\left( 1-\gamma
+\right) \left( \sigma -\phi \right) }.
+\end{equation*}
+
+What is new in our model?:
+
+\begin{enumerate}
+\item \textbf{Exchange rate now matters}. First, the current value of this
+rate appears in the New Keynesian Phillips curve. In addition, the expected
+value of the exchange rate also appears in the IS equation. However, this
+last effect should be discarded because depends on the assumption of
+endogenous discounting. Since we assume that the value of $\phi $ is very
+close to zero, this effect tends to disappear. Focusing on the effect of
+exchange rate on the inflation, this is given by $\lambda \kappa _{2}.$
+Observe that $\kappa _{2}$ can be decomposed into two effects: \textit{%
+production effect} and \textit{demand effect}. Let us explain them:
+
+\begin{itemize}
+\item[(a)] \underline{Production effect}.- A depreciation of the exchange
+rate increases the prices of the imported inputs, which increases the
+marginal cost of producing and then the domestic inflation.
+
+\item[(b)] \underline{Demand effect}.- This effect has two components. A
+deprecation of the exchange rate provokes a substitution of home consumption
+goods by foreign goods, which increases the marginal cost of producing and
+then the domestic inflation. In addition the depreciation of exchange rate
+has also an income effect, the depreciation forces the consumers to reduce
+the consumption of domestic goods if they want to maintain the level of
+consumption of foreign goods. This reduction of the demand of domestic
+goods, reduces the marginal cost and then the domestic inflation rate. A NEW
+TASK: We hace to decompose the second part of $\kappa _{2}$ into the two
+components of this demand effect.
+\end{itemize}
+
+\item In our economy \textbf{openness depends on two parameters}: $\gamma ,$
+which determines the exterior dependence of demand; and $\delta ,$ which
+determines the exterior dependence of production. This arises some important
+issues:
+
+\begin{itemize}
+\item[(a)] The effects of $\gamma $ are different to the original model of
+Gali and Monacelli (2005). As in this paper, in our economy $\gamma $ also
+affects the response of the output gap to the real interest rate ($\mu )$
+and the response of inflation to the current output gap ($\kappa _{1}).$
+However, this parameter $\gamma $ also affect in our model to the response
+of inflation to the current exchange rate ($\kappa _{2}).$
+
+\item[(b)] In contrast with Gali and Monacelli (2005), and as McCallum and
+Nelson (1999), openness also matters in the production side. The parameter $%
+\delta $ first affects the response of inflation to the current output gap ($%
+\lambda ),$ and to the current exchange rate ($\lambda $ and $\kappa _{2}).$
+However, in contrast with the demand openness $\gamma ,$ this channel of
+openness does not affect the response of output gap to the real interest
+rate ($\mu ).$
+
+\item[(c)] Regarding the effect of openness on the response of domestic
+inflation to output gap, note that the effect is ambiguous in our model
+because openness in demand ($\gamma )$ positively affects $\kappa _{1},$
+whereas openness in production ($\delta )$ negatively affects $\lambda .$
+
+\item[(d)] These channels of openness effect should be considered to analyze
+the policy trade-off and the stability of the competitive equilibrium.
+\end{itemize}
+
+\item \textbf{What is the role of incomplete markets in the equilibrium
+relations?} To answer this question, we should derive the complete version
+of our model, which is a little be different than the one in Gali and
+Monacelli (2005) because our assumption on the openness in the production
+side (i.e., $\delta \neq 0).$ In complete markets the international risk
+sharing imposes that $q_{t}=\sigma \left( c_{t}+c_{t}^{\ast }\right) ,$
+Using this relationship we obtain that the expression (30) in the paper
+transforms into%
+\begin{equation*}
+y_{t}=\left[ 1-\gamma +\frac{\gamma \sigma \eta \left( 2-\gamma \right) }{%
+1-\gamma }\right] c_{t}+\left[ \gamma +\frac{\gamma \sigma \eta \left(
+2-\gamma \right) }{1-\gamma }\right] c_{t}^{\ast }.
+\end{equation*}%
+This implies that output is a linear function of exchange rate, so that they
+are perfect correlated. By using this new expression, we obtain that the
+differences between the incomplete market model and the complete market
+model is in three points:
+
+\begin{itemize}
+\item[(a)] In the complete version the exchange rate does not affect the
+inflation, i.e., $\kappa _{2}^{c}=0.\footnote{%
+We will use the super-script $c$ to denote the parameters that are different
+in the complete market version of the model.}$ This implies that the
+complete version is an isomorphism of the close model. This is true because
+even when the expected exchange rate affects the output gap, this effect is
+negligible because $\phi $ is almost zero, and so also $\chi .$
+Interestingly, remember that the fact that $\kappa _{2}\neq 0$ implies that
+incompleteness introduces endogenously a cost push in the New Keynesian
+Phillips curve.
+
+\item[(b)] Incompleteness also affects the response of inflation to the
+output gap. Effectively, the parameter $\kappa _{1}$ is different in the
+complete version. In particular, it would be%
+\begin{equation*}
+\kappa _{1}^{c}=\left\{ \frac{1+\delta \left( \varphi -v\right) }{\left(
+1-\delta \right) \left[ 1-\gamma +\frac{\gamma \sigma \eta \left( 2-\gamma
+\right) }{1-\gamma }\right] }\right\} \left( \frac{\sigma }{1-\gamma }%
+\right) +\varphi .
+\end{equation*}%
+The difference between $\kappa _{1}$ (incomplete markets) and $\kappa
+_{1}^{c}$ (complete markets) is the first expression in the right-hand side
+of $\kappa _{1}^{c}.$ This difference has an ambiguous sign because a priory
+is difficult to sign $\varphi -v.$ However, we will consider negative values
+of $v.$ Hence, this first expression in the right-hand side of $\kappa
+_{1}^{c}$ will be positive. However, we do not yet know whether this
+expression is larger or smaller than one. In the next section we will
+quantify this difference.
+
+\item[(c)] Finally, incompleteness also affects the response of output gap
+to the real interest rate given by $\mu .$ In the complete market version
+this parameter would be%
+\begin{equation*}
+\mu ^{c}=\left[ \frac{1-\gamma }{\sigma -\phi \left( 1-\gamma \right) }%
+\right] \left[ 1-\gamma +\frac{\eta \gamma \sigma \left( 2-\gamma \right) }{%
+1-\gamma }\right]
+\end{equation*}%
+However, provided that $\phi $ takes values very close to zero, then $\mu
+=\mu ^{c}.$ Therefore, the effect of incompleteness in the response of
+output gap to real interest rate is negligible.
+\end{itemize}
+
+Therefore, the relevant difference introduced by assuming incomplete markets
+is in the New Keynesian Phillips curve. WE SHOULD FIND INTUITIONS FOR THESE
+DIFFERENCES.
+
+\item \textbf{A caveat}.- Our model with complete markets is not equal to
+the model in Gali and Monacelli (2005). One obvious reason is that we
+incorporate the openness in production, which affects the response of
+inflation rate to output gap $\lambda \kappa _{1}^{c}.$ However, this
+discrepancy with Gali and Monacelli (2005) also arise in the response of
+output gap to real interest rate $\mu ^{c}$ even when this parameter does
+not depend on openness in production $\delta .$ In particular, this
+parameter $\mu ^{c}$ in Gali and Monacelli (2005) framework with endogenous
+discounting would be 
+\begin{equation*}
+\mu ^{gm}=\left[ \frac{1-\gamma }{\sigma -\phi \left( 1-\gamma \right) }%
+\right] \left[ 1-\gamma +\frac{\sigma \gamma \left[ \widehat{\gamma }+\eta
+\left( 1-\gamma \right) \right] }{1-\gamma }\right] .
+\end{equation*}%
+The difference is the parameter $\widehat{\gamma }$ that in our model is
+equal to $\eta .$ What is the economic meaning of this parameter $\widehat{%
+\gamma }?$ Gali and Monacelli (2005) consider that each imported good $j$ is
+a CES aggregator of the quantity purchased in each foreign country $i,$
+where $\widehat{\gamma }$ is the elasticity of substitution across
+countries, i.e., 
+\begin{equation*}
+C_{F}(j)=\left[ \int_{0}^{1}\left[ C_{i}(j)\right] ^{\frac{\widehat{\gamma }%
+-1}{\widehat{\gamma }}}\right] ^{\frac{\widehat{\gamma }}{\widehat{\gamma }-1%
+}}.
+\end{equation*}%
+We follow Clarida et al. (2001) in treating the rest of the world as a
+single, non-small country. This implies to assume that $\widehat{\gamma }%
+=\eta .$
+
+QUESTION: what does this mean in terms of substitutability between
+countries? Therefore, our model with complete markets coincides with Gali
+and Monacelli (2005) under they calibration: $\widehat{\gamma }=\eta =1.$
+However, both models do not exactly coincide under the calibration in Llosa
+and Tuesta (2006): $\widehat{\gamma }=1$ and $\eta =1.5.$ We will consider
+in our calibration that $\eta =1.5,$ so that we will be assuming that $%
+\widehat{\gamma }=1.5.$ This point should be clear. In any case, we think
+that this point is negligible for the numerical results.
+
+TO BE DISCUSSED.- Should we change our model to be compared with Gali and
+Monacelli (2005) and Llosa and Tuesta (2006). I think that this change is
+not necessary because the negligible quantitative consequences of this
+deviation. We can say that we consider the Clarida et al. (2001) version of
+the demand side to consider the rest of the world as a non-small country.
+\end{enumerate}
+
+\textbf{Note.-} The second part of $\lambda $ and the first pat of $\kappa
+_{2}$ is wrong in the paper. The true expressions are those given above.
+
+\section{Calibration}
+
+Our baseline economy is defined by taking the same parameters as Llosa and
+Tuesta (2008) and McCallum and Nelson (1999). Llosa and Tuesta (2008) uses
+the same calibration as Gali and Monacelli (2005) with the exception of the
+inverse of IES ($\sigma ),$ the inverse of Frisch labor supply elasticity ($%
+\varphi ),$ and the elasticity of substitution between domestic and foreign
+goods ($\eta ).$ However, the calibration of the former seems much
+convenient for our analysis for two reasons: (i) because of comparison for
+the stability analysis; and (ii) because is a much general calibration.
+Furthermore, these parameters does not affect qualitatively to the results,
+although they may have important quantitative effects. This is mainly true
+in the case of $\sigma .$ In fact, we will perform some sensitivity analysis
+in this parameter when it would be required.
+
+The next table summarizes this parametrization:
+
+\begin{center}
+\begin{tabular}{|lllll|}
+\hline
+\textbf{Parameter} &  & \textbf{Value} &  & \textbf{Source} \\ 
+\cline{1-1}\cline{3-3}\cline{5-5}
+\textit{Preferences} &  &  &  &  \\ 
+\multicolumn{1}{|c}{$\sigma $} &  & \multicolumn{1}{c}{$5$} &  & Llosa and
+Tuesta (2008) \\ 
+\multicolumn{1}{|c}{$\psi $} &  & \multicolumn{1}{c}{$-1$} &  & Gali and
+Monacelli (2005) \\ 
+\multicolumn{1}{|c}{$\varphi $} &  & \multicolumn{1}{c}{$0.47$} &  & Llosa
+and Tuesta (2008) \\ 
+\multicolumn{1}{|c}{$\phi $} &  & \multicolumn{1}{c}{$10^{-6}$} &  &  \\ 
+\multicolumn{1}{|c}{$\vartheta $} &  & \multicolumn{1}{c}{$0$} &  &  \\ 
+\multicolumn{1}{|c}{$\beta $} &  & \multicolumn{1}{c}{$0.99$} &  & Gali and
+Monacelli (2005) \\ 
+\textit{Composition demand} &  & \multicolumn{1}{c}{} &  &  \\ 
+\multicolumn{1}{|c}{$\eta $} &  & \multicolumn{1}{c}{$1.5$} &  & Llosa and
+Tuesta (2008) \\ 
+\multicolumn{1}{|c}{$\gamma $} &  & \multicolumn{1}{c}{$0.4$} &  & Gali and
+Monacelli (2005) \\ 
+\multicolumn{1}{|c}{$\varepsilon $} &  & \multicolumn{1}{c}{$6$} &  & Gali
+and Monacelli (2005) \\ 
+\multicolumn{1}{|c}{$sc$} &  & \multicolumn{1}{c}{$0.75$} &  & Cooley and
+Prescott (1995) \\ 
+&  & \multicolumn{1}{c}{$0.89$} &  & McCallum and Nelson (1999) \\ 
+\textit{Production} &  & \multicolumn{1}{c}{} &  &  \\ 
+\multicolumn{1}{|c}{$\theta $} &  & \multicolumn{1}{c}{$0.75$} &  & Gali and
+Monacelli (2005) \\ 
+\multicolumn{1}{|c}{$v$} &  & \multicolumn{1}{c}{$-2$} &  & McCallum and
+Nelson (1999) \\ 
+\multicolumn{1}{|c}{$\delta $} &  & \multicolumn{1}{c}{$0.144$} &  & 
+McCallum and Nelson (1999) \\ \hline
+\end{tabular}
+\end{center}
+
+The parameter $v$ is chosen by McCallum and Nelson (2005) to avoid a
+excessive variability of the output under flexible prices with respect to
+real exchange rate. In our model this variability is given by $\Omega _{2}.$
+As in the aforementioned paper, this volatility is small for values of $v$
+smaller than $-2.$
+
+The previous would be our baseline economy. However, we will compare in our
+numerical discussion and analysis between four different scenarios:
+
+\begin{enumerate}
+\item Our baseline economy: the open economy with incomplete markets.
+
+\item Our extreme example followed to derive the optimal policy: $\phi =0,$ $%
+\alpha =1$ (i.e., $\delta =0)$.
+
+\item The open economy with complete markets: $\kappa _{2}=0,$ $\kappa
+_{1}=\kappa _{1}^{c}$ and $\mu =\mu ^{c}.$ WE SHOULD COMPUTE THE EQUILIBRIUM
+FROM THE BEGINING USING THE FACT THAT PERFEC SHARING IMPLIES $%
+c_{t}=q_{t}/\sigma ,$ WHICH SHOULD BE SUBSTITUTED INTO $(30).$
+
+\item The close economy: $\gamma =0$ and $\alpha =1$ (i.e., $\delta =0).$
+\end{enumerate}
+
+Afterwards we may also consider the intervals of the parameters that
+determines the stability of the equilibrium under different monetary
+policies. These parameters could be: (i) those determining the openness via
+demand, i.e., $\eta $ and $\gamma ;$ (ii) those determining the openness via
+production, i.e., $\alpha $ and $v;$ (iii) those determining the frictions,
+i.e., $\varepsilon $ and $\theta ;$ and (iv) the inverse of the
+intertemporal elasticity of substitution $\sigma .$
+
+\section{Numerical values of equilibrium relations}
+
+By using our baseline calibration we can already sign the reduced parameters
+determining the equilibrium relations between variables in the approximation
+of the competitive equilibrium (\ref{Phillips}), (\ref{is equation}) and (%
+\ref{exchange dynamics}). In particular we obtain
+
+\begin{center}
+\begin{equation*}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{Baseline Economy} \\ \hline\hline
+Paramater &  & Value \\ \cline{1-1}\cline{3-3}
+$\lambda $ &  & $0.0719$ \\ 
+$\kappa _{1}$ &  & $8.8033$ \\ 
+$\kappa _{2}$ &  & $-12.3424$ \\ 
+$\varpi $ &  & $1.0000$ \\ 
+$\mu $ &  & $1.0320$ \\ 
+$\chi $ &  & $3.2\times 10^{-7}$ \\ \hline
+\end{tabular}%
+\end{equation*}
+\end{center}
+
+The unique unclear equilibrium relation is the dependence of the output gap
+from the real exchange rate in the New Keynesian Phillips curve, given by $%
+\lambda \kappa _{2}.$ From Mundell-Flemming one should expect that without
+imported inputs this value should be negative. We show that in our baseline
+economy, this value is also negative with import inputs. In fact, we obtain
+that $\kappa _{2}$ is positive if and only if $v\in \left( -46.086,1\right)
+. $ (Remember that $v\leq 1,$ and $v=0$ is the Cobb-Douglas production
+function). Therefore, the aforementioned income effects of the exchange rate
+variations dominates.
+
+At this point, it is convenient quantify the differences between the
+incomplete market version and the complete market version in terms of
+equilibrium relations. Remember that this differences are in the relations $%
+\lambda \kappa _{1},$ $\lambda \kappa _{2}$ and $\mu .$ The next table
+reports this differences with and without openness in production:
+
+\begin{equation*}
+\begin{tabular}{ccc|cc|c}
+& \multicolumn{2}{c|}{Incomplete} & \multicolumn{2}{|c|}{Complete} & Close
+\\ \cline{2-6}
+& $\delta =0.114$ & $\delta =0$ & $\delta =0.114$ & $\delta =0$ & $\delta
+=\gamma =0$ \\ \hline\hline
+$\lambda \kappa _{1}$ & $0.6325$ & $0.7556$ & $0.1440$ & $0.1235$ & $0.4695$
+\\ 
+$\lambda \kappa _{2}$ & $-0.8868$ & $-1.0872$ & $0$ & $0$ & $0$ \\ 
+$\mu $ & $1.0320$ & $1.0320$ & $1.0320$ & $1.0320$ & $0.2$ \\ \hline
+\end{tabular}%
+\end{equation*}%
+From this table we conclude the following:
+
+\begin{enumerate}
+\item The positive response of the inflation rate to the output gap, given
+by $\lambda \kappa _{1},$ is much larger with incomplete markets. FIND AN
+EXPLANATION.
+
+\item This response of the inflation rate to the output gap, given by $%
+\lambda \kappa _{1},$ is decreasing with $\delta $ (openness in production)
+in the incomplete market version, whereas $\lambda \kappa _{1},$ is
+increasing with $\delta $ in the complete market economy. FIND AN
+EXPLANATION.
+
+\item The response of the inflation rate to the output gap, given by $%
+\lambda \kappa _{1},$ in the close economy is between the value in the
+incomplete market version and the complete market version.
+
+\item The openness in production, given by $\delta ,$ reduces the negative
+effect of the depreciation of the exchange rate on the inflation rate. This
+is obvious because with $\delta =0,$ the production effect determined $%
+\kappa _{2}$ disappears.
+
+\item Given that $\phi $ is very close to zero, the response of the output
+gap to the interest rate, given by $\mu ,$ is the same in the two versions
+of open economies.
+
+\item The response of the output gap to the interest rate, given by $\mu ,$
+is much smaller in the close economy.
+\end{enumerate}
+
+Using the value of $\sigma =1$ in Gali and Monacelli we obtain:
+
+\begin{equation*}
+\begin{tabular}{|ccc|}
+\hline
+\multicolumn{3}{|c|}{$\sigma =1$} \\ \hline\hline
+Paramater &  & Value \\ \cline{1-1}\cline{3-3}
+$\lambda $ &  & $0.0719$ \\ 
+$\kappa _{1}$ &  & $2.1367$ \\ 
+$\kappa _{2}$ &  & $-1.6757$ \\ 
+$\varpi $ &  & $1.0000$ \\ 
+$\mu $ &  & $1.0320$ \\ 
+$\chi $ &  & $1.6\times 10^{-6}$ \\ \hline
+\end{tabular}%
+\end{equation*}
+
+We observe that the important change with respect to the baseline economy is 
+$\kappa _{2},$ which determines the effect of real exchange rate in the
+inflation. There is also an important change in $\kappa _{1}$; which
+determines the response of inflation to output gap. However these changes
+only affect the length but not the sign. We should mention this point. In
+general, the change in the calibration with respect to the original in Gali
+and Monacelli implies important variations in the equilibrium relations.
+Although the main source of this change is the new value of $\sigma $ (i.e.,
+the inverse of the intertemporal elasticity of substitution). The $\eta $
+(i.e., the elasticity of substitution between domestic and foreign goods)
+has important impacts on $\kappa _{2}$ but much smaller than $\sigma ,$ and $%
+\varphi $ (i.e., the inverse of the Frisch labor supply elasticity) has a
+very small impact on $\kappa _{2}.$
+
+\section{Policy rules}
+
+We will consider three policy rules:
+
+\begin{enumerate}
+\item The \textit{Domestic Inflation Taylor Rule} (DITR).- Where the
+domestic monetary authority adjust the domestic interest rate to both
+domestic inflation and the domestic output gap:%
+\begin{equation}
+i_{t}=\phi _{\pi }\pi _{H,t}+\phi _{x}\widetilde{x}_{t}  \label{DITR}
+\end{equation}%
+where $\phi _{\pi }$ and $\phi _{x}$ are exogenous non-negative reaction
+parameters.
+
+\item The \textit{Managed Exchange Rate Taylor Rule} (MERTR).- Where the
+domestic monetary authority adjust the domestic interest rate to both
+domestic inflation and the domestic output gap:%
+\begin{equation}
+i_{t}=\phi _{\pi }\pi _{H,t}+\phi _{x}\widetilde{x}_{t}+\phi
+_{s}\bigtriangleup s_{t}  \label{MERTR}
+\end{equation}%
+where $\bigtriangleup s_{t}$ is the change in the nominal exchange rate, and 
+$\phi _{\pi },$ $\phi _{x}$ and $\phi _{s}$ are again exogenous non-negative
+reaction parameters.
+
+\item The \textit{Optimal Policy Rule} (OPR).- We have obtained that the
+optimal condition of the minimization problem of the Loss Function is%
+\begin{equation}
+a\widetilde{q}_{t}+b\widetilde{x}_{t}+c\pi _{H,t}+\widetilde{z}_{t}=0,
+\label{OPR}
+\end{equation}%
+where $a,$ $b$ and $c$ are reduced parameters that depend on the fundamental
+parameters, and $\widetilde{z}_{t}$ is an exogenous stochastic variable.
+This will be a monetary rule of the form%
+\begin{equation*}
+i_{t}=\widehat{\phi }_{\pi }E\left\{ \pi _{H,t+1}\right\} +\widehat{\phi }%
+_{x}E\left\{ \widetilde{x}_{t+1}\right\} +\widehat{\phi }_{q}E\left\{ 
+\widetilde{q}_{t+1}\right\} ,
+\end{equation*}%
+where $\widehat{\phi }_{\pi },$ $\widehat{\phi }_{x}$ and $\widehat{\phi }%
+_{q}$ are now \textbf{endogenous} reaction parameters (i.e, they depend on
+the fundamental parameters of our model). For that resason we first study
+the stability of the following ad-hoc rule\ (contemporaneous and
+forecast-based):%
+\begin{equation}
+i_{t}=\phi _{\pi }\pi _{H,t}+\phi _{x}\widetilde{x}_{t}+\phi _{q}\widetilde{q%
+}_{t},  \label{ERTR}
+\end{equation}%
+where $\phi _{\pi },$ $\phi _{x}$ and $\phi _{q}$ are again exogenous
+non-negative reaction parameters. After that, we should check if the
+parameters of the optimal rule $\widehat{\phi }_{\pi },$ $\widehat{\phi }%
+_{x} $ and $\widehat{\phi }_{q}$ belong to the set of parameters $\left\{
+\phi _{\pi },\phi _{x},\phi _{q}\right\} $ that report determinacy in the
+previous\textit{\ Exchange Rate Taylor Rule}.
+\end{enumerate}
+
+We should consider two things respect these simple Taylor policies. First,
+under the ad-hoc simple Taylor Rules we will use the same calibration for
+the policy reaction parameters as in Llosa and Tuesta (2008) when numerical
+analysis is required: $\phi _{\pi }\in \left[ 0,4\right] $, $\phi _{x}\in %
+\left[ 0,4\right] $ and $\phi _{e}\geq 0.$ Second, we must to decide whether
+or not we consider also the forecast-based versions of these Taylor rules as
+in Bullard and Mitra (2002) and Llosa and Tuesta (2008). This seems a
+natural exercise because the optimal policy at the end implies an optimal
+interest rate that depends on the expected values of the variables (see
+below).
+
+We compare all the results with the complete market case by setting $\kappa
+_{2}=0$ and analyzing the system formed by (\ref{Phillips}) and \ref{is
+equation}.
+
+\section{Domestic Inflation Taylor Rule}
+
+By combining the policy rule (\ref{DITR}) with (\ref{Phillips}), (\ref{is
+equation}) and (\ref{exchange dynamics}), we obtain after some tedious
+algebra the following representation of the competitive equilibrium under
+the DITR monetary policy:\footnote{\textbf{A caveat}.- The stochatic part of
+this representation should be revised: the matrix $C.$ For instance, the
+definition of $\varepsilon _{t}$ includes $u_{t}.$ However, this is not
+relevant for the stability of the competitive equilibrium, only for the
+simulation of the dynamics and the welfare cost of deviating from the
+optimal policy rule. In any case, this caveat applies for all the policy
+rules.}%
+\begin{equation}
+\left( 
+\begin{array}{c}
+\mathbb{E}_{t}\left\{ \widetilde{x}_{t+1}\right\} \\ 
+\mathbb{E}_{t}\left\{ \pi _{H,t+1}\right\} \\ 
+\mathbb{E}_{t}\left\{ \widetilde{q}_{t+1}\right\}%
+\end{array}%
+\right) =\underset{A}{\underbrace{\left( 
+\begin{array}{ccc}
+a_{11} & a_{12} & a_{13} \\ 
+a_{21} & a_{22} & a_{23} \\ 
+a_{31} & a_{32} & a_{33}%
+\end{array}%
+\right) }}\left( 
+\begin{array}{c}
+\widetilde{x}_{t} \\ 
+\pi _{H,t} \\ 
+\widetilde{q}_{t}%
+\end{array}%
+\right) +\underset{C}{\underbrace{\left( 
+\begin{array}{ccc}
+-\frac{1}{\varpi } & 0 & \frac{\chi }{\varpi } \\ 
+0 & 0 & 0 \\ 
+0 & 0 & -1%
+\end{array}%
+\right) }}\left( 
+\begin{array}{c}
+\varepsilon _{t} \\ 
+0 \\ 
+u_{t}%
+\end{array}%
+\right) ,  \label{DITR solution}
+\end{equation}%
+where%
+\begin{equation*}
+a_{11}=\frac{1+\left( \phi _{x}+\frac{\lambda \kappa _{1}}{\beta }\right) %
+\left[ \mu -\chi \left( 1-\gamma \right) \right] }{\varpi },
+\end{equation*}%
+\begin{equation*}
+a_{12}=\frac{\left( \phi _{\pi }-\frac{1}{\beta }\right) \left[ \mu -\chi
+\left( 1-\gamma \right) \right] }{\varpi },
+\end{equation*}%
+\begin{equation*}
+a_{13}=\frac{\left( \frac{\lambda \kappa _{2}}{\beta }\right) \left[ \mu
+-\chi \left( 1-\gamma \right) \right] -\chi }{\varpi },
+\end{equation*}%
+\begin{equation*}
+a_{21}=-\frac{\lambda \kappa _{1}}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{22}=\frac{1}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{23}=-\frac{\lambda \kappa _{2}}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{31}=\left( 1-\gamma \right) \left[ \phi _{x}-a_{21}\right] ,
+\end{equation*}%
+\begin{equation*}
+a_{32}=\left( 1-\gamma \right) \left[ \phi _{\pi }-a_{22}\right] ,
+\end{equation*}%
+and%
+\begin{equation*}
+a_{33}=1-\left( 1-\gamma \right) a_{23}.
+\end{equation*}%
+For stability we must characterize the sign of the eigenvalues of matrix $A.$
+Following Blanchard and Khan (1980), in our forward-looking solution (\ref%
+{DITR solution}) there are three non-predeterminated variables. Therefore,
+the equilibrium under DITR will be determinate if the three eigenvalues of $%
+A $ are outside the unit circle, whereas it will be indeterminate when at
+least one of the three eigenvalues of $A$ is inside the unit circle.
+Unfortunately, there is difficult to obtain an analytical characterization
+of this stability. We next simulate this stability.
+
+\subsection{Numerical results}
+
+Following Bullard and Mitra (2002) and Llosa and Tuesta (2008) we consider
+the following policy reaction parameters: $\phi _{\pi }\in \left[ 0,4\right] 
+$ and $\phi _{x}\in \left[ 0,4\right] .$ In this case we obtain the first
+preliminary results:
+
+\begin{enumerate}
+\item In our baseline open economy with incomplete markets, the set of
+indeterminacy is similar to the obtained by Llosa and Tuesta (2008). See the
+next figure%
+%\begin{equation*}
+%\FRAME{itbpF}{4.7435in}{3.0199in}{0in}{}{}{Figure}{\special{language
+%"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+%"USEDEF";valid_file "T";width 4.7435in;height 3.0199in;depth
+%0in;original-width 11.7917in;original-height 7.4789in;cropleft "0";croptop
+%"1";cropright "1";cropbottom "0";tempfilename
+%'L37YPR02.wmf';tempfile-properties "XPR";}}
+%\end{equation*}%
+We observe that the larger value $\phi _{\pi }$ for which indeterminacy
+arises is $1,$ which corresponds with $\phi _{x}=0.$ By the contrary the
+larger value of $\phi _{x}$ for which we find indeterminacy is $4$ (the
+maximum value), which corresponds with $\phi _{\pi }=0.96.$ In fact this
+point $\left( \phi _{\pi },\phi _{x}\right) =\left( 1,0.96\right) ,$ which
+we mark with $H$ in the figure, determines the length of indeterminacy and,
+therefore, the constraint faced by the policy makers in setting a DITR as a
+stabilizing device. In particular, the monetary authority has not constraint
+if the policy reaction to inflation $\phi _{\pi }$ is larger than unity.
+However, provided that $\phi _{\pi }<1,$ the smaller this policy parameter
+is, the greater the authority's responses to the output gap.
+
+TASK.- We should check the sensitivity of the indeterminacy length (point H)
+to the degree of openess ($\gamma $ and $\delta )$ like in Llosa and Tuesta
+(2008).
+
+\item \textbf{Main result.- }The set of indeterminacy in our version of open
+economy with complete markets and close economy are similar to the previous
+one. However, the indeterminacy is larger in the incomplete market economy
+than in the complete market one. In addition, the length of indeterminacy in
+the close economy is between the length in the two open economies: with and
+without complete markets. The largest value of $\phi _{\pi }$ for which
+indeterminacy arises is $1$ in the three economies. However the point $H$ in
+the previous figure is different across economies. Next table provides the
+value of this point for the three economies:%
+\begin{equation*}
+\begin{tabular}{lcccc}
+\multicolumn{5}{c}{Indeterminacy threshold (point $H)$} \\ \hline\hline
+&  & $\phi _{\pi }$ &  & $\phi _{x}$ \\ \hline
+\multicolumn{1}{c}{Open and incomplete} &  & $0.96$ &  & $4$ \\ 
+\multicolumn{1}{c}{Open and complete} &  & $0.72$ &  & $4$ \\ 
+\multicolumn{1}{c}{Close} &  & $0.91$ &  & $4$ \\ \hline
+\end{tabular}%
+\end{equation*}%
+Therefore, the constrains faced by the policy markers is slightly tighter in
+the baseline economy (i.e., open economy with incomplete markets) than in
+the open economy with complete markets. This means that, whenever $\phi
+_{\pi }<1,$ open economies with incomplete markets needs greater responses
+to the output gap than open economies with complete markets. The mechanism
+should be found in the parameters $\kappa _{2}$ and $\kappa _{1}$
+determining the response of inflation rate to the current exchange rate and
+the current output gap, respectively. WE MUST WORK THIS POINT. Furthermore,
+as in Llosa and Tuesta (2008), the constrains faced by the policy markers is
+slightly tighter in the close economy than in the open economy with complete
+markets. However, and this is a remarkable result, the constraints faced by
+the policy makers is slightly tighter in the open economy with incomplete
+markets than in the close economy. In other words, while openness reduces
+the constraint for policy makers if markets are complete, this opens
+increases the constraints if markets are incomplete.
+
+\item As was mentioned before, the results largely depend on the value of
+sigma. First, the length of indeterminacy is increasing in $\sigma .$ In
+addition, the quantitative differences in the set of indeterminacy across
+economies is slightly larger for smaller values of $\sigma .$ The next table
+reports the results on the length of indeterminacy for $\sigma =1$
+(considered by Gali and Monacelli, 2005):%
+\begin{equation*}
+\begin{tabular}{lcccc}
+\multicolumn{5}{c}{Indeterminacy threshold (point $H)$} \\ \hline\hline
+&  & $\phi _{\pi }$ &  & $\phi _{x}$ \\ \hline
+\multicolumn{1}{c}{Open and incomplete} &  & $0.82$ &  & $4$ \\ 
+\multicolumn{1}{c}{Open and complete} &  & $0.66$ &  & $4$ \\ 
+\multicolumn{1}{c}{Close} &  & $0.68$ &  & $4$ \\ \hline
+\end{tabular}%
+\end{equation*}
+
+\item The value of $\phi $ (endogenous discounting) has either a marginal
+role in the differences across the economies. However, by setting $\phi =0,$
+the competitive equilibrium is almost indeterminate for all the combinations
+of the policy reaction parameters $\phi _{\pi }$ and $\phi _{x}.$ In any
+case, it is difficult to find any pattern in the indeterminacy when $\phi
+=0. $
+\end{enumerate}
+
+\textbf{In summarizing}, indeterminacy under this Domestic Inflation Taylor
+Rule in our model is more often than in the original Gali and Monacelli
+(2005), which was analyzed by Bullard and Mitra (2002) and Llosa and Tuesta
+(2008). Furthermore, contrary to those authors, openness with incomplete
+markets increases the combinations of parameter reactions $\phi _{\pi }$ and 
+$\phi _{x}$ for which equilibrium in indeterminate.
+
+\subsection{Forecast-based DITR}
+
+We now analyze the stability with the monetary authority sets the domestic
+interest rate by responding to the expected domestic inflation and the
+domestic output gap:%
+\begin{equation}
+i_{t}=\phi _{\pi }\mathbb{E}_{t}\left\{ \pi _{H,t+1}\right\} +\phi _{x}%
+\mathbb{E}_{t}\left\{ \widetilde{x}_{t+1}\right\} .  \label{EDITR}
+\end{equation}%
+With this policy rule, the competitive equilibrium is given by%
+\begin{equation}
+\left( 
+\begin{array}{c}
+\mathbb{E}_{t}\left\{ \widetilde{x}_{t+1}\right\} \\ 
+\mathbb{E}_{t}\left\{ \pi _{H,t+1}\right\} \\ 
+\mathbb{E}_{t}\left\{ \widetilde{q}_{t+1}\right\}%
+\end{array}%
+\right) =\underset{A_{1}}{\underbrace{\left( 
+\begin{array}{ccc}
+a_{11} & a_{12} & a_{13} \\ 
+a_{21} & a_{22} & a_{23} \\ 
+a_{31} & a_{32} & a_{33}%
+\end{array}%
+\right) }}\left( 
+\begin{array}{c}
+\widetilde{x}_{t} \\ 
+\pi _{H,t} \\ 
+\widetilde{q}_{t}%
+\end{array}%
+\right) +\underset{C_{1}}{\underbrace{\left( 
+\begin{array}{ccc}
+c_{11} & 0 & c_{13} \\ 
+0 & 0 & 0 \\ 
+c_{31} & 0 & c_{33}%
+\end{array}%
+\right) }}\left( 
+\begin{array}{c}
+\varepsilon _{t} \\ 
+0 \\ 
+u_{t}%
+\end{array}%
+\right) ,  \label{EDITR solution}
+\end{equation}%
+where 
+\begin{equation*}
+a_{11}=\frac{1+\left( \frac{\lambda \kappa _{1}}{\beta }\right) \left(
+1-\phi _{\pi }\right) \left[ \mu -\chi \left( 1-\gamma \right) \right] }{%
+\varpi -\phi _{x}\left[ \mu -\chi \left( 1-\gamma \right) \right] },
+\end{equation*}%
+\begin{equation*}
+a_{12}=-\frac{\left( \frac{1}{\beta }\right) \left( 1-\phi _{\pi }\right) %
+\left[ \mu -\chi \left( 1-\gamma \right) \right] }{\varpi -\phi _{x}\left[
+\mu -\chi \left( 1-\gamma \right) \right] },
+\end{equation*}%
+\begin{equation*}
+a_{13}=\frac{-\chi +\left( \frac{\lambda \kappa _{2}}{\beta }\right) \left(
+1-\phi _{\pi }\right) \left[ \mu -\chi \left( 1-\gamma \right) \right] }{%
+\varpi -\phi _{x}\left[ \mu -\chi \left( 1-\gamma \right) \right] },
+\end{equation*}%
+\begin{equation*}
+a_{21}=-\frac{\lambda \kappa _{1}}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{22}=\frac{1}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{23}=-\frac{\lambda \kappa _{2}}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{31}=\left( 1-\gamma \right) \left[ a_{11}\phi _{x}-a_{21}\left( 1-\phi
+_{\pi }\right) \right] ,
+\end{equation*}%
+\begin{equation*}
+a_{32}=\left( 1-\gamma \right) \left[ a_{12}\phi _{x}-a_{22}\left( 1-\phi
+_{\pi }\right) \right] ,
+\end{equation*}%
+\begin{equation*}
+a_{33}=1+\left( 1-\gamma \right) \left[ a_{13}\phi _{x}-a_{23}\left( 1-\phi
+_{\pi }\right) \right] ,
+\end{equation*}%
+\begin{equation*}
+c_{11}=-\frac{1}{\varpi -\phi _{x}\left[ \mu -\chi \left( 1-\gamma \right) %
+\right] },
+\end{equation*}%
+\begin{equation*}
+c_{13}=\frac{\chi }{\varpi -\phi _{x}\left[ \mu -\chi \left( 1-\gamma
+\right) \right] },
+\end{equation*}%
+\begin{equation*}
+c_{31}=-\frac{\left( 1-\gamma \right) \left( 1-\phi _{\pi }\right) }{\varpi
+-\phi _{x}\left[ \mu -\chi \left( 1-\gamma \right) \right] },
+\end{equation*}%
+and%
+\begin{equation*}
+c_{33}=\frac{\chi \left( 1-\gamma \right) \left( 1-\phi _{\pi }\right) }{%
+\varpi -\phi _{x}\left[ \mu -\chi \left( 1-\gamma \right) \right] }-1.
+\end{equation*}%
+The results of stability in this case are (\textbf{CHECK ALGEBRA}):
+
+\begin{enumerate}
+\item There are a subset of combinations of $\phi _{\pi }$ and $\phi _{x}$
+where the competitive equilibrium is indeterminate. Now this subset of
+indeterminacy is much larger than in the case of DITR.
+
+\item Indeterminacy is larger in incomplete than in complete.
+
+\item Indeterminacy is larger in the open economy with complete markets than
+in close economy. This result contradicts Llosa and Tuesta (2008). MORE WORK
+IS REQURED.
+
+\item BUT, the picture are quite different that those in Llosa and Tuesta
+(2008). What is wrong? MORE WORK IS REQUIRED.
+\end{enumerate}
+
+These results can be obtained from the following figure%
+%\begin{equation*}
+%\begin{tabular}{lll}
+%$\FRAME{itbpF}{1.7694in}{1.1355in}{0in}{}{}{Figure}{\special{language
+%"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+%"USEDEF";valid_file "T";width 1.7694in;height 1.1355in;depth
+%0in;original-width 11.6144in;original-height 7.3855in;cropleft "0";croptop
+%"1";cropright "1";cropbottom "0";tempfilename
+%'L3823R07.wmf';tempfile-properties "XPR";}}$ & \FRAME{itbpF}{1.7746in}{%
+%1.1684in}{0in}{}{}{Figure}{\special{language "Scientific Word";type
+%"GRAPHIC";maintain-aspect-ratio TRUE;display "USEDEF";valid_file "T";width
+%1.7746in;height 1.1684in;depth 0in;original-width 11.6456in;original-height
+%7.6043in;cropleft "0";croptop "1";cropright "1";cropbottom "0";tempfilename
+%'L381S105.wmf';tempfile-properties "XPR";}} & \FRAME{itbpF}{1.7288in}{%
+%1.1467in}{0in}{}{}{Figure}{\special{language "Scientific Word";type
+%"GRAPHIC";maintain-aspect-ratio TRUE;display "USEDEF";valid_file "T";width
+%1.7288in;height 1.1467in;depth 0in;original-width 11.3438in;original-height
+%7.4581in;cropleft "0";croptop "1";cropright "1";cropbottom "0";tempfilename
+%'L381Z806.wmf';tempfile-properties "XPR";}}%
+%\end{tabular}%
+%\end{equation*}
+
+\section{Managed exchange rate Taylor Rule}
+
+The problem with this rule is that our reduced form of equilibrium is in
+terms of $\widetilde{q}_{t}$ instead of $\bigtriangleup s_{t}.$ However, we
+can find in the solution of the model a relations between these two
+variables that we can use to analyze the stability of this rule. By
+definition we know that%
+\begin{equation*}
+s_{t}=q_{t}+p_{t}-p_{t}^{\ast }.
+\end{equation*}%
+From this expression we directly obtain that%
+\begin{equation}
+\bigtriangleup s_{t}=\bigtriangleup q_{t}+\bigtriangleup
+p_{t}-\bigtriangleup p_{t}^{\ast }.  \label{Variation of s}
+\end{equation}%
+We derived in the paper (see Expression 28) that%
+\begin{equation*}
+p_{t}-p_{H,t}=\left( \frac{\gamma }{1-\gamma }\right) q_{t}.
+\end{equation*}%
+From this expression we also directly obtain that%
+\begin{equation*}
+\bigtriangleup p_{t}=\left( \frac{\gamma }{1-\gamma }\right) \bigtriangleup
+q_{t}+\bigtriangleup p_{H,t},
+\end{equation*}%
+which can be written by using the defintion of $\pi _{H,t}$ as%
+\begin{equation}
+\bigtriangleup p_{t}=\left( \frac{\gamma }{1-\gamma }\right) \bigtriangleup
+q_{t}+\pi _{H,t}.  \label{Variation of p}
+\end{equation}%
+By combining (\ref{Variation of s}) and (\ref{Variation of p}), we get%
+\begin{equation}
+\bigtriangleup s_{t}=\left( \frac{1}{1-\gamma }\right) \bigtriangleup
+q_{t}+\pi _{H,t}-\bigtriangleup p_{t}^{\ast }.  \label{Variation of s bis}
+\end{equation}%
+At this point, we assume that the rest of the world follows an optimal
+monetary policy such that $\bigtriangleup p_{t}^{\ast }=0.$ This is without
+lost of generality since $\bigtriangleup p_{t}^{\ast }$ is an exogenous
+process in general, so it does not affect stability of equlibria. We then
+obtain the following equlibrium condition%
+\begin{equation}
+\bigtriangleup s_{t}=\left( \frac{1}{1-\gamma }\right) \bigtriangleup
+q_{t}+\pi _{H,t}.  \label{our relation}
+\end{equation}%
+By using (\ref{our relation}) in the policy rule (\ref{MERTR}), we obtain%
+\begin{equation}
+i_{t}=\left( \phi _{\pi }+\phi _{s}\right) \pi _{H,t}+\phi _{x}\widetilde{x}%
+_{t}+\frac{\phi _{s}}{1-\gamma }\left( \widetilde{q}_{t}-\widetilde{q}%
+_{t-1}\right) .  \label{DIMERTR}
+\end{equation}
+
+By combining the policy rule (\ref{DIMERTR}) with (\ref{Phillips}), (\ref{is
+equation}) and (\ref{exchange dynamics}), we obtain after some tedious
+algebra the representation of the competitive equilibrium under the MERTR
+monetary policy.\footnote{\textbf{A caveat}.- The stochatic part of this
+representation should be revised: the matrix $C.$ For instance, the
+definition of $\varepsilon _{t}$ includes $u_{t}.$ However, this is not
+relevant for the stability of the competitive equilibrium, only for the
+simulation of the dynamics and the welfare cost of deviating from the
+optimal policy rule. In any case, this caveat applies for all the policy
+rules.} For that purpose, we first introduce the following dummy variable $%
+z_{t}=\widetilde{q}_{t-1}.$ In this way, we obtain that%
+\begin{equation}
+\left( 
+\begin{array}{c}
+\mathbb{E}_{t}\left\{ \widetilde{x}_{t+1}\right\} \\ 
+\mathbb{E}_{t}\left\{ \pi _{H,t+1}\right\} \\ 
+\mathbb{E}_{t}\left\{ \widetilde{q}_{t+1}\right\} \\ 
+z_{t+1}%
+\end{array}%
+\right) =\underset{A}{\underbrace{\left( 
+\begin{array}{cccc}
+a_{11} & a_{12} & a_{13} & a_{14} \\ 
+a_{21} & a_{22} & a_{23} & 0 \\ 
+a_{31} & a_{32} & a_{33} & a_{34} \\ 
+0 & 0 & 1 & 0%
+\end{array}%
+\right) }}\left( 
+\begin{array}{c}
+\widetilde{x}_{t} \\ 
+\pi _{H,t} \\ 
+\widetilde{q}_{t} \\ 
+z_{t}%
+\end{array}%
+\right) +\underset{C}{\underbrace{\left( 
+\begin{array}{cccc}
+-\frac{1}{\varpi } & 0 & \frac{\chi }{\varpi } & 0 \\ 
+0 & 0 & 0 & 0 \\ 
+0 & 0 & -1 & 0 \\ 
+0 & 0 & 0 & 0%
+\end{array}%
+\right) }}\left( 
+\begin{array}{c}
+\varepsilon _{t} \\ 
+0 \\ 
+u_{t} \\ 
+0%
+\end{array}%
+\right) ,  \label{MERTR solution}
+\end{equation}%
+where%
+\begin{equation*}
+a_{11}=\frac{1+\left( \phi _{x}+\frac{\lambda \kappa _{1}}{\beta }\right) %
+\left[ \mu -\chi \left( 1-\gamma \right) \right] }{\varpi },
+\end{equation*}%
+\begin{equation*}
+a_{12}=\frac{\left( \phi _{\pi }+\phi _{s}-\frac{1}{\beta }\right) \left[
+\mu -\chi \left( 1-\gamma \right) \right] }{\varpi },
+\end{equation*}%
+\begin{equation*}
+a_{13}=\frac{\left( \phi _{q}+\frac{\lambda \kappa _{2}}{\beta }\right) %
+\left[ \mu -\chi \left( 1-\gamma \right) \right] -\chi }{\varpi },
+\end{equation*}%
+\begin{equation*}
+a_{14}=-\frac{\left( \frac{\phi _{s}}{1-\gamma }\right) \left[ \mu -\chi
+\left( 1-\gamma \right) \right] }{\varpi }
+\end{equation*}%
+\begin{equation*}
+a_{21}=-\frac{\lambda \kappa _{1}}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{22}=\frac{1}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{23}=-\frac{\lambda \kappa _{2}}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{31}=\left( 1-\gamma \right) \left[ \phi _{x}-a_{21}\right] ,
+\end{equation*}%
+\begin{equation*}
+a_{32}=\left( 1-\gamma \right) \left[ \phi _{\pi }+\phi _{s}-a_{22}\right] ,
+\end{equation*}%
+\begin{equation*}
+a_{33}=1+\phi _{s}-\left( 1-\gamma \right) a_{23},
+\end{equation*}%
+and%
+\begin{equation*}
+a_{34}=-\phi _{s}.
+\end{equation*}
+
+\subsection{Results}
+
+For stability we must characterize the sign of the eigenvalues of matrix $A.$
+We next simulate this stability. Following Bullard and Mitra (2002) and
+Llosa and Tuesta (2008) we consider the following policy reaction
+parameters: $\phi _{\pi }\in \left[ 0,4\right] ,$ $\phi _{x}\in \left[ 0,4%
+\right] $ and $\phi _{s}=0.6,$ even when we consider the real exchange rate
+as a target instead of the changes in the nominal exchange rate. WE SHOULD
+MAKE SENSITIVITY ANALYSIS RESPECT TO $\phi _{s}.$ In this case we obtain the
+first preliminary results:
+
+\begin{enumerate}
+\item Under incomplete markets, the equilibrium is determinate for large
+values of $\phi _{\pi }$ and small values of $\phi _{x}.$ See the figure%
+%\begin{equation*}
+%\FRAME{itbpF}{4.5204in}{2.7614in}{0in}{}{}{Figure}{\special{language
+%"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+%"USEDEF";valid_file "T";width 4.5204in;height 2.7614in;depth
+%0in;original-width 11.2296in;original-height 6.8338in;cropleft "0";croptop
+%"1";cropright "1";cropbottom "0";tempfilename
+%'L4781M01.wmf';tempfile-properties "XPR";}}
+%\end{equation*}
+
+This result seems to be robust to changes in $\phi _{s}.$ CHECK THIS POINT
+
+\item Under complete markets we use the fact that $c_{t}=q_{t}/\sigma .$
+This implies that $q_{t}=\tau y_{t},$ so that the policy rule can be
+transformed into%
+\begin{equation*}
+i_{t}=\left( \phi _{\pi }+\phi _{s}\right) \pi _{H,t}+\left( \phi _{x}+\frac{%
+\tau \phi _{s}}{1-\gamma }\right) \widetilde{x}_{t}-\frac{\tau \phi _{s}}{%
+1-\gamma }-\widetilde{x}_{t-1},
+\end{equation*}%
+and we now use the dummy variable $z_{t}=\widetilde{x}_{t-1}.$ With complete
+markets, the results coincide with Llosa and Tuesta (2008): indeterminacy
+only appears for low values of $\phi _{\pi }.$ The next figure illustrate
+this point:%
+%\begin{equation*}
+%\FRAME{itbpF}{4.4564in}{2.6152in}{0in}{}{}{Figure}{\special{language
+%"Scientific Word";type "GRAPHIC";maintain-aspect-ratio TRUE;display
+%"USEDEF";valid_file "T";width 4.4564in;height 2.6152in;depth
+%0in;original-width 11.0731in;original-height 6.4688in;cropleft "0";croptop
+%"1";cropright "1";cropbottom "0";tempfilename
+%'L477Z500.wmf';tempfile-properties "XPR";}}
+%\end{equation*}
+
+\item So incomplete markets lead this manage exchange rate Taylor rule to be
+indeterminate for a large number of combinations of reaction parameters $%
+\phi ^{\prime }s$. We observe that this rule (\ref{DIMERTR}) is equivalente
+to the Exchange rate Taylor rule (\ref{ERTR}), where the central bank cares
+about the level of the real exchange rate. The differences is that in (\ref%
+{DIMERTR})) the central government puts more weigth in inflation than in (%
+\ref{ERTR}), and in (\ref{DIMERTR})) the government cares about the changes
+in the real exchange rate instead about the level. In the next section, we
+prove that the indeterminacy set in Exchange rate Taylor rule (\ref{ERTR})
+is similar to the case of Domestic Inflation Taylor Rule (\ref{DITR}).
+Hence, by comparing this later result with the result in this section for
+MERTER (\ref{DIMERTR}), we can conclude that the optimal policy should care
+more about the level of real exchange rate than about its change. In other
+words, caring about the level of real exchange rate is more effective than
+caring about the change in this exchange rate. However, this is in
+contradiction with the conclusion from the complete market model, but it is
+in the line of what the optimal policy rule states.
+\end{enumerate}
+
+IT SHOULD BE COMPLETED
+
+\subsection{Forecast-based managed exchange rate Taylor rule}
+
+TO BE COMPLETED
+
+\section{Optimal rule}
+
+The problem is that this optimal rule was derived with $\phi =0,$ and the
+indeterminacy follows a strange pattern in this case and arises for almost
+the entire set of combinations of $\phi _{\pi }$ and $\phi _{x}.$ In any
+case, we can still find the endogenous values of the policy reaction
+parameters $\phi _{\pi ,}\phi _{x}$ and $\phi _{q},$ and then see whether
+this combination belongs to the determinacy or indeterminacy region found
+for the Forecast-based Exchange Rate Taylor Rule. This FB-ERTR policy is of
+the same form as the optimal policy, with the difference that in the former
+rule the policy reaction parameters are exogenous. An important \textbf{%
+caveat} of this procedure is that the stability of the FB-ERTR was derived
+with $\phi >0,$ while the optimal policy was derived with $\phi =0.$
+
+\subsection{Exchange Rate Taylor Rule}
+
+Hence, we first analyze the case of the Exchange Rate Taylor Rule. By
+combining the policy rule (\ref{ERTR}) with (\ref{Phillips}), (\ref{is
+equation}) and (\ref{exchange dynamics}), we obtain after some tedious
+algebra the following representation of the competitive equilibrium under
+the ERTR monetary policy:\footnote{\textbf{A caveat}.- The stochatic part of
+this representation should be revised: the matrix $C.$ For instance, the
+definition of $\varepsilon _{t}$ includes $u_{t}.$ However, this is not
+relevant for the stability of the competitive equilibrium, only for the
+simulation of the dynamics and the welfare cost of deviating from the
+optimal policy rule. In any case, this caveat applies for all the policy
+rules.}%
+\begin{equation}
+\left( 
+\begin{array}{c}
+\mathbb{E}_{t}\left\{ \widetilde{x}_{t+1}\right\} \\ 
+\mathbb{E}_{t}\left\{ \pi _{H,t+1}\right\} \\ 
+\mathbb{E}_{t}\left\{ \widetilde{q}_{t+1}\right\}%
+\end{array}%
+\right) =\underset{A}{\underbrace{\left( 
+\begin{array}{ccc}
+a_{11} & a_{12} & a_{13} \\ 
+a_{21} & a_{22} & a_{23} \\ 
+a_{31} & a_{32} & a_{33}%
+\end{array}%
+\right) }}\left( 
+\begin{array}{c}
+\widetilde{x}_{t} \\ 
+\pi _{H,t} \\ 
+\widetilde{q}_{t}%
+\end{array}%
+\right) +\underset{C}{\underbrace{\left( 
+\begin{array}{ccc}
+-\frac{1}{\varpi } & 0 & \frac{\chi }{\varpi } \\ 
+0 & 0 & 0 \\ 
+0 & 0 & -1%
+\end{array}%
+\right) }}\left( 
+\begin{array}{c}
+\varepsilon _{t} \\ 
+0 \\ 
+u_{t}%
+\end{array}%
+\right) ,  \label{ERTR solution}
+\end{equation}%
+where%
+\begin{equation*}
+a_{11}=\frac{1+\left( \phi _{x}+\frac{\lambda \kappa _{1}}{\beta }\right) %
+\left[ \mu -\chi \left( 1-\gamma \right) \right] }{\varpi },
+\end{equation*}%
+\begin{equation*}
+a_{12}=\frac{\left( \phi _{\pi }-\frac{1}{\beta }\right) \left[ \mu -\chi
+\left( 1-\gamma \right) \right] }{\varpi },
+\end{equation*}%
+\begin{equation*}
+a_{13}=\frac{\left( \phi _{q}+\frac{\lambda \kappa _{2}}{\beta }\right) %
+\left[ \mu -\chi \left( 1-\gamma \right) \right] -\chi }{\varpi },
+\end{equation*}%
+\begin{equation*}
+a_{21}=-\frac{\lambda \kappa _{1}}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{22}=\frac{1}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{23}=-\frac{\lambda \kappa _{2}}{\beta },
+\end{equation*}%
+\begin{equation*}
+a_{31}=\left( 1-\gamma \right) \left[ \phi _{x}-a_{21}\right] ,
+\end{equation*}%
+\begin{equation*}
+a_{32}=\left( 1-\gamma \right) \left[ \phi _{\pi }-a_{22}\right] ,
+\end{equation*}%
+and%
+\begin{equation*}
+a_{33}=1+\left( 1-\gamma \right) \left[ \phi _{q}-a_{23}\right] .
+\end{equation*}%
+For stability we must characterize the sign of the eigenvalues of matrix $A.$
+We next simulate this stability. Following Bullard and Mitra (2002) and
+Llosa and Tuesta (2008) we consider the following policy reaction
+parameters: $\phi _{\pi }\in \left[ 0,4\right] ,$ $\phi _{x}\in \left[ 0,4%
+\right] $ and $\phi _{q}=0.6,$ even when we consider the real exchange rate
+as a target instead of the changes in the nominal exchange rate. WE SHOULD
+MAKE SENSITIVITY ANALYSIS RESPECT TO $\phi _{q}.$ In this case we obtain the
+first preliminary results:
+
+\begin{enumerate}
+\item The subset of indeterminacy is the same that in the case of the
+Domestic Inflation Taylor Rule. This would imply that policy reaction of
+interest rate to movements in the nominal exchange rate does not affect the
+lowers limits of both $\phi _{x}$ and $\phi _{\pi }.$ In fact, if we
+increase $\phi _{q}$ to 1.6 the indeterminacy set increase a little bite:
+the point $H$ goes from $(1,0.96)$ to $(1,0.97).$ This means that by
+increasing the policy reaction to variations in the exchange rate we
+increase the set of determinacy, i.e., we shrink the lower limits of both $%
+\phi _{x}$ and $\phi _{\pi }.$
+\end{enumerate}
+
+\subsection{Forecast-based Exchange Rate Taylor Rule}
+
+TO BE COMPLETED
+
+\subsection{Stability of the optimal rule}
+
+TO BE COMPLETED
+
+\end{document}
